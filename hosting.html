@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Douglas Long Dev</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<link rel="apple-touch-icon" sizes="57x57" href="./images/icons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="./images/icons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="./images/icons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="./images/icons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="./images/icons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="./images/icons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="./images/icons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="./images/icons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="./images/icons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="./images/icons/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        
+        <!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							
+							<h1>Basic - Hosting</h1>
+							<p>$25/month + GST</p>
+						</header>
+						
+						<footer>
+							<ul class="actions special">
+								<li><a id="checkout-button-plan_HDgPcHABLB8JRk"
+                                    role="link" href="#" class="button">Get Started</a></li>
+                            </ul>
+                            <div id="error-message"></div>
+                        </footer>
+                        
+<script>
+    (function() {
+      var stripe = Stripe('pk_test_0lrfIuEx5jFQXwOC0ubwl7lT00VurVR2nV');
+    
+      var checkoutButton = document.getElementById('checkout-button-plan_HDgPcHABLB8JRk');
+      checkoutButton.addEventListener('click', function () {
+        // When the customer clicks on the button, redirect
+        // them to Checkout.
+        stripe.redirectToCheckout({
+          lineItems: [{price: 'plan_HDgPcHABLB8JRk', quantity: 1}],
+          mode: 'subscription',
+          // Do not rely on the redirect to the successUrl for fulfilling
+          // purchases, customers may not always reach the success_url after
+          // a successful payment.
+          // Instead use one of the strategies described in
+          // https://stripe.com/docs/payments/checkout/fulfillment
+          successUrl: 'https://douglaslong.dev/success.html',
+      cancelUrl: 'https://douglaslong.dev/canceled.html',
+        })
+        .then(function (result) {
+          if (result.error) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer.
+            var displayError = document.getElementById('error-message');
+            displayError.textContent = result.error.message;
+          }
+        });
+      });
+    })();
+    </script>
+    
+
+    
+    
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+							<li>&copy; Douglas Long Dev</li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+
+	</body>
+</html>
